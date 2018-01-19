@@ -1,0 +1,21 @@
+---
+applications:
+ -
+  name: approuter-p2000000225trial
+  host: approuter-p2000000225trial
+  buildpack: nodejs_buildpack
+  memory: 128M
+  path: ./
+  env:
+    NODE_TLS_REJECT_UNAUTHORIZED: 0
+    SAP_JWT_TRUST_ACL: "[{\"clientid\" : \"*\", \"identityzone\" : \"*\"}]"
+    TENANT_HOST_PATTERN: ^(.*)-p2000000225trial.cfapps.eu10.hana.ondemand.com
+    destinations: >
+      [{
+         "name":"eh-xsuaa-demo",
+         "url" : "https://eh-xsuaa-demo.cfapps.eu10.hana.ondemand.com",
+         "forwardAuthToken": true }
+      ]
+
+  services:
+    - my-xsuaa

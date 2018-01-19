@@ -1,0 +1,7 @@
+---
+applications:
+- name: eh-service
+  memory: 300M
+  disk_quota: 600M
+  command: python simple.py
+  buildpack: https://github.com/cloudfoundry/buildpack-python.git

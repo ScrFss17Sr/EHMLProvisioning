@@ -1,0 +1,13 @@
+{
+  "routes": [
+  {
+  	"source": "/",
+    "target": "/",
+    "destination": "eh-xsuaa-demo"
+  },
+  {
+  	"source": "/protected",
+    "target": "/protected",
+    "destination": "eh-xsuaa-demo"
+  }]
+}

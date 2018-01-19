@@ -1,0 +1,33 @@
+{
+    "xsappname": "eh-xsuaa-demo",
+    "tenant-mode": "dedicated",
+    "scopes": [
+        {
+            "name": "$XSAPPNAME.Scope1",
+            "description": ""
+        },
+        {
+            "name": "$XSAPPNAME.Scope2",
+            "description": ""
+        }
+  ],
+    "role-templates": [
+    {
+            "name": "Role1",
+            "description": "",
+            "scope-references": [
+             "$XSAPPNAME.Scope1"
+              ] 
+              
+    },
+    {
+            "name": "Role2",
+            "description": "SOC Administrator Role Template",
+            "scope-references": [
+             "$XSAPPNAME.Scope2"
+              ] 
+              
+              
+    }
+  ]
+}

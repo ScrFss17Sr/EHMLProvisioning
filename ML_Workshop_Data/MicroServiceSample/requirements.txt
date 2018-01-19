@@ -1,0 +1,12 @@
+flask
+flask_cors
+Flask-JWT
+pyjwt
+numpy
+scipy
+pandas
+pyhdb
+
+
+
+

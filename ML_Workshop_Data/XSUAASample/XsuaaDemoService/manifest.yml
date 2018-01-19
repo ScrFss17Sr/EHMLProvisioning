@@ -1,0 +1,9 @@
+---
+applications:
+- name: eh-xsuaa-demo
+  memory: 200M
+  disk_quota: 600M
+  command: python xsuaaDemo.py
+  buildpack: https://github.com/cloudfoundry/buildpack-python.git
+  services:
+    - my-xsuaa
