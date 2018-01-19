@@ -1,21 +1,22 @@
 from flask import Flask, Response, request
-from flask_cors import CORS
 from functools import wraps
-#from DBConnector import fetchData
 import os
 
-port = 9009
 
 app = Flask(__name__)
-port = int(os.getenv("PORT", port))
-CORS(app)
+port = int(os.getenv("PORT", 9009))
+
+@app.route('/', methods=['GET', 'POST'])
+def service():
+    return "Welcome in Heidelberg"
+
 
 
 def check_auth(username, password):
     """This function is called to check if a username /
     password combination is valid.
     """
-    return username == 'admin' and password == 'secret'
+    return username == 'eh' and password == 'welcome'
 
 def authenticate():
     """Sends a 401 response that enables basic auth"""
@@ -33,16 +34,15 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-@app.route('/add', methods=['GET'])
+@app.route('/protected')
 @requires_auth
-def add():
-    return "Added"
-
-@app.route('/sql', methods=['GET'])
-@requires_auth
-def executeSQL():
-    return fetchData()
-
+def secret_page():
+    return "This shows a secret."
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, threaded=True)
+
+    #cf map-route approuter-p2000000225trial cfapps.sap.hana.ondemand.com
+    # -n approuter-p2000000225trial.cfapps.eu10.hana.ondemand.com
+
+    #cf create-service xsuaa application my-xsuaa -c xs-security.json

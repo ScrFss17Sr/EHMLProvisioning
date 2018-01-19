@@ -6,6 +6,8 @@ numpy
 scipy
 pandas
 pyhdb
+matplotlib
+sklearn
 
 
 

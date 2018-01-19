@@ -1,7 +1,7 @@
 ---
 applications:
 - name: eh-service
-  memory: 300M
-  disk_quota: 600M
-  command: python simple.py
+  memory: 600M
+  disk_quota: 1024M
+  command: python predictor.py
   buildpack: https://github.com/cloudfoundry/buildpack-python.git

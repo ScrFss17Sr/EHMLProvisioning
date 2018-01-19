@@ -17,11 +17,11 @@ class LinearRegressionModel:
 
         self._y_pred = []
 
-        self.prepareData(fullpath="../data/train.csv", testSize=10)
+        self.prepareData(fullpath="./data/train.csv", testSize=10)
 
 
     #Load Data from .csv file
-    def prepareData(self, fullpath="../data/train.csv", testSize=10):
+    def prepareData(self, fullpath="./data/train.csv", testSize=10):
         print('Load data from '+ fullpath)
         with open(fullpath, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=',')
