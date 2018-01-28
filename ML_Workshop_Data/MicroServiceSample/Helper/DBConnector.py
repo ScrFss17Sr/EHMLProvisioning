@@ -51,30 +51,40 @@ def insert(conn, schema="", table="", data=[]):
     cursor.close
 
 def insertData(schema="", table="", data=[] ):
+    csv_loader = CSVLoader(fullpath='../data/data.csv', delimiter=',')
+    data = csv_loader.get_all_data()
+
+    test = list()
+    for row in data:
+        d = {}
+        d['x'] = row[0]
+        d['y'] = row[1]
+        test.append(d)
+
     conn = connectToHana()
     insert(conn=conn, schema=schema, table=table, data=data)
 
-def select(schema="", table="", where=""):
-    return
+def select(schema="", table=""):
+    setSchema(conn, schema)
+
+    query = 'select *  FROM ' + table + ';'
+    cursor = conn.cursor()
+    print(query)
+    try:
+        ret = cursor.execute(query)
+        ret = cursor.fetchall()
+        for row in ret:
+            print(str(row[0]) + ' ' + str(row[1]) )
+    except:
+        print('Something went wrong')
+        return
 
 if __name__ == '__main__':
     conn = connectToHana()
     if(conn.isconnected()):
         print('Successfully connected to Hana')
-
-        csv_loader = CSVLoader(fullpath='../data/train.csv', delimiter=',')
-        data = csv_loader.get_all_data()
-
-
-        test = list()
-        for row in data:
-            d = {}
-            d['x'] = row[0]
-            d['y'] = row[1]
-            test.append(d)
-
-        print(test)
-        insert(conn=conn, schema="EML", table="EH_BI_DATA", data= test)
+        select(schema="EML", table="EH_BI_DATA")
+        #insert(conn=conn, schema="EML", table="EH_BI_DATA")
 
     print("Finished");
 
